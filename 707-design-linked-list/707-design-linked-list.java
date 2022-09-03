@@ -1,45 +1,45 @@
 class MyLinkedList {
-    
+
     class Node{
         Node next = null;
         int val = 0;
-        
+
         public Node(int val){
             this.val = val;
         }
     }
-    
+
     private Node head;
     private Node tail;
     private int size;
-    
+
     /** Initialize your data structure here. */
     public MyLinkedList() {
         this.head = null;
         this.tail = null;
         this.size = 0;
     }
-    
+
     /** Get the value of the index-th node in the linked list. If the index is invalid, return -1. */
     public int get(int index) {
         if(index < 0 || index >= this.size) return -1;
-        
+
         Node curr = this.head;
         while(index-- > 0){
             curr = curr.next;
         }
         return curr.val;
     }
-    
+
     public Node getNodeAt(int index){
         Node curr = head;
         while(index-- > 0){
             curr = curr.next;
         }
-        
+
         return curr;
     }
-    
+
     /** Add a node of value val before the first element of the linked list. After the insertion, the new node will be the first node of the linked list. */
     public void addAtHead(int val) {
         Node node = new Node(val);
@@ -53,7 +53,7 @@ class MyLinkedList {
         }
         this.size++;
     }
-    
+
     /** Append a node of value val to the last element of the linked list. */
     public void addAtTail(int val) {
         Node node = new Node(val);
@@ -68,11 +68,11 @@ class MyLinkedList {
         }
         this.size++;
     }
-    
+
     /** Add a node of value val before the index-th node in the linked list. If index equals to the length of linked list, the node will be appended to the end of linked list. If index is greater than the length, the node will not be inserted. */
     public void addAtIndex(int index, int val) {
         if(index < 0 || index > this.size) return;
-        
+
         if(index == 0){
             addAtHead(val);
         }
@@ -88,7 +88,7 @@ class MyLinkedList {
             this.size++;
         }
     }
-    
+
     public void deleteFirst(){
         if(this.size == 0) return;
         else if(this.size == 1){
@@ -103,7 +103,7 @@ class MyLinkedList {
         }
         this.size--;
     }
-    
+
     public void deleteLast(){
         if(this.size == 0) return;
         else if(this.size == 1){
@@ -117,11 +117,11 @@ class MyLinkedList {
         }
         this.size--;
     }
-    
+
     /** Delete the index-th node in the linked list, if the index is valid. */
     public void deleteAtIndex(int index) {
         if(index < 0 || index >= this.size) return;
-        
+
         if(index == 0){
             deleteFirst();
         }
@@ -138,12 +138,3 @@ class MyLinkedList {
         }
     }
 }
-/**
- * Your MyLinkedList object will be instantiated and called as such:
- * MyLinkedList obj = new MyLinkedList();
- * int param_1 = obj.get(index);
- * obj.addAtHead(val);
- * obj.addAtTail(val);
- * obj.addAtIndex(index,val);
- * obj.deleteAtIndex(index);
- */
