@@ -7,7 +7,8 @@ public:
     }
     
     bool check(ListNode* p) {
-        if (NULL == p) return true;
+       // if (NULL == p) return true;
+        if (p == NULL) return true;
         bool isPal = check(p->next) & (temp->val == p->val);
         temp = temp->next;
         return isPal;
