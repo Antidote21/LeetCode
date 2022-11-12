@@ -1,12 +1,11 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> t; // stack for storing opening parentheses
-        int i; // variable i to travel
+        stack<char> t; 
+        //int i; 
         
-        for(auto i:s) // travel into whole string
+        for(auto i:s) 
         {
-            // if any opening parentheses, push into stack
             if(i == '(' || i =='{' || i == '[')
             {
                 t.push(i);
