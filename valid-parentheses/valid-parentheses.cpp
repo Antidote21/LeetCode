@@ -1,27 +1,23 @@
 class Solution {
 public:
     bool isValid(string s) {
-        stack<char> t; 
-        //int i; 
-        
+        stack<char> stack; 
+          
         for(auto i:s) 
         {
             if(i == '(' || i =='{' || i == '[')
             {
-                t.push(i);
+                stack.push(i);
             }
             else
             {
-                // check condition for false
-                if(t.empty() || (t.top() == '(' && i != ')') || (t.top() == '{' && i != '}') || (t.top() == '[' && i != ']'))
+                if(stack.empty() || (stack.top() == '(' && i != ')') || (stack.top() == '{' && i != '}') || (stack.top() == '[' && i != ']'))
                 {
                     return false;
-                }
-                
-                t.pop(); // else pop from stack
+                }     
+                stack.pop(); 
             }
-        }
-        
-        return t.empty(); // if stack is empty then it is valid, otherwise no
+        }       
+        return stack.empty(); 
     }
 };
