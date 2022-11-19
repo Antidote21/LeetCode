@@ -3,15 +3,15 @@ public:
     vector<int> dailyTemperatures(vector<int>& temperatures) {
         
         int n = temperatures.size();
-        vector<int>nge(n, 0); // initially all 0, stores distance between their next greater element and current temperature
-        stack<int>st{};
+        vector<int>nge(n, 0); 
+        stack<int>st;
         
-		// move from right to left
+		//오르쪽에서 왼쪽으로 이동
         for(int i = n-1; i>=0; --i){
-            // pop until we find next greater element to the right
-			// since we came from right stack will have element from right only
+			
 			// s.top() is the index of elements so we put that index inside temperatures vector to check
-            while(!st.empty() && temperatures[st.top()] <= temperatures[i])
+
+            while(!st.empty()&&temperatures[st.top()] <= temperatures[i])
                 st.pop();
 				
             // if stack not empty, then we have some next greater element, 
@@ -22,6 +22,7 @@ public:
             
 			// push the index of current temperature in the stack,
 			// same as pushing current temperature in stack
+           
             st.push(i);
         }
         
