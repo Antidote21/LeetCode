@@ -46,3 +46,36 @@ public:
         return uf.Union(start, end);
     }
 };
+
+class Solution {
+public:
+    bool validPath(int n, vector<vector<int>>& edges, int start, int end) {
+        unordered_map<int,vector<int>> graph;
+        // ex)graph[1] = {2};
+        // graph[2] = {1, 3, 4};
+        // graph[3] = {2};
+        // graph[4] = {2}; 
+        for(auto e : edges) { //양방향 그래프 구성 
+            graph[e[0]].push_back(e[1]); //e[0] 출발 정점 e[1] 도착 정점  
+            graph[e[1]].push_back(e[0]);
+        }
+        vector<bool> visited(n,0);//방문 정점 표시를 위한 벡터 n은 정점의 수         
+        queue<int> q; 
+        q.push(start); 
+        visited[start] = 1; //시작 정점 방문 
+        while(!q.empty()) {
+            int curr = q.front(); //큐에서 정점을 하나 꺼냄 
+            q.pop();
+            if(curr == end) //curr이 목적지에 도착 
+                return 1;
+            for(auto &node : graph[curr]){
+                if(!visited[node]){//방문하지 않은 정점 
+                    visited[node] = 1; //방문 표시 
+                    q.push(node);//q에 node를 넣음 
+                }
+            }
+        }
+        
+        return false;
+    }
+};
